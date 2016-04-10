@@ -1,0 +1,107 @@
+@import "mixins.scss";
+
+* {
+	font-family: 'Open Sans Semibold', sans;
+}
+
+a {
+	text-decoration: none;
+
+	&:visiteda:link, &:visited {
+    	color: blue;
+	}
+}
+
+header {
+	box-shadow: 0 5px 5px -5px #B9B9B9;
+	position:relative; // hack to show box-shadow over siblings.
+
+	.intro {
+		height: 480px;
+	}
+
+	.sosages-background {
+		background: url('/assets/images/header-background.png');
+		position: relative;
+
+		&:before {
+			content: '';
+			position: absolute;
+			top: 0;
+			right: 0;
+			bottom: 0;
+			left: 0;
+			height: 150px;
+			background-image: linear-gradient(to bottom, #000000, rgba(0,0,0,0));
+			opacity: .6; 
+		}
+	}
+
+	nav {
+
+		ul {
+			list-style: none;
+			text-align: center;
+			padding-top: 24px;
+			padding-bottom: 34px;
+			padding-left: 0;
+			margin-bottom: 0px;
+
+			li {
+				display: inline-block;
+				font-size: 20px;
+				letter-spacing: 2px;
+				white-space: nowrap;
+
+				@include respond-to(handhelds) { 
+					display: block;
+				}
+				@include respond-to(medium-screens) { 
+					display: block;
+				}
+				@include respond-to(wide-screens) { 
+					display: inline-block;
+
+					position: relative;
+					left: 30px;
+
+					&+li {
+						margin-left: 70px;
+					}
+				}
+
+				a {
+					color: black;
+				}
+			}
+		}
+	}
+}
+
+footer {
+	clear: both;
+	background: #efefef;
+	font-size: 14px;
+	height: 45px;
+	padding-top: 28px;
+
+	.copyright {
+		float: left;
+		margin-left: 20px;
+	}
+
+	.contacts {
+		float: right;
+		margin-right: 20px;
+
+		address {
+			font-style: normal;
+			display: inline;
+		}
+
+		.pipe {
+			margin: 0 5px;
+			display: inline-block;;
+		}
+	}
+}

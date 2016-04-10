@@ -1,0 +1,42 @@
+/// Mixin printing a linear-gradient
+/// as well as a plain color fallback
+/// and the `-webkit-` prefixed declaration
+/// @access public
+/// @param {Keyword | Angle} $direction - Linear gradient direction
+/// @param {Arglist} $color-stops - List of color-stops composing the gradient
+@mixin linear-gradient($direction, $color-stops...) {
+  background: nth(nth($color-stops, 1), 1);
+  background: -webkit-linear-gradient(legacy-direction($direction), $color-stops);
+  background: linear-gradient($direction, $color-stops);
+}
+
+
+@mixin flex {
+	display: -ms-flex;
+	display: -webkit-flex;
+	display: flex;
+}
+
+@mixin scale($zoom) {
+    -webkit-transform:scale($zoom); /* Safari and Chrome */
+    -moz-transform:scale($zoom); /* Firefox */
+    -ms-transform:scale($zoom); /* IE 9 */
+    -o-transform:scale($zoom); /* Opera */
+     transform:scale($zoom);
+}
+
+
+$small: 320px;
+$large: 720px;
+
+@mixin respond-to($media) {
+  @if $media == handhelds {
+    @media only screen and (max-width: $small) { @content; }
+  }
+  @else if $media == medium-screens {
+    @media only screen and (min-width: $small + 1) and (max-width: $large - 1) { @content; }
+  }
+  @else if $media == wide-screens {
+    @media only screen and (min-width: $large) { @content; }
+  }
+}
